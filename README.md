@@ -1,2 +1,2 @@
-# java-jdbc - https://youtu.be/vGCLCI-cNaU
+# java-jdbc
 Exemplo utilizando JDBC e SQLite
