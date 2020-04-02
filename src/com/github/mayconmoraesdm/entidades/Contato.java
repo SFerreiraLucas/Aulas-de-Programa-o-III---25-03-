@@ -10,7 +10,9 @@ public class Contato extends Entidade{
     private Integer id;
     private String nome;
     private String telefone;
+    private String telefone2;
     private String celular;
+    private String celular2;
     private String email;
 
     public Integer getId() {
@@ -37,12 +39,28 @@ public class Contato extends Entidade{
         this.telefone = telefone;
     }
 
+    public String getTelefone2() {
+        return telefone2;
+    }
+
+    public void setTelefone2(String telefone2) {
+        this.telefone2 = telefone2;
+    }
+
     public String getCelular() {
         return celular;
     }
 
     public void setCelular(String celular) {
         this.celular = celular;
+    }
+
+    public String getCelular2() {
+        return celular2;
+    }
+
+    public void setCelular2(String celular2) {
+        this.celular2 = celular2;
     }
 
     public String getEmail() {
@@ -69,7 +87,9 @@ public class Contato extends Entidade{
             setId(id);
             setNome(contatoBd.getNome());
             setTelefone(contatoBd.getTelefone());
+            setTelefone2(contatoBd.getTelefone2());
             setCelular(contatoBd.getCelular());
+            setCelular2(contatoBd.getCelular2());
             setEmail(contatoBd.getEmail());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -83,7 +103,9 @@ public class Contato extends Entidade{
             setId(contatoBd.getId());
             setNome(contatoBd.getNome());
             setTelefone(contatoBd.getTelefone());
+            setTelefone2(contatoBd.getTelefone2());
             setCelular(contatoBd.getCelular());
+            setCelular2(contatoBd.getCelular2());
             setEmail(contatoBd.getEmail());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -106,7 +128,9 @@ public class Contato extends Entidade{
                 c.setId(rs.getInt("id"));
                 c.setNome(rs.getString("nome"));
                 c.setTelefone(rs.getString("telefone"));
+                c.setTelefone2(rs.getString("telefone2"));
                 c.setCelular(rs.getString("celular"));
+                c.setCelular2(rs.getString("celular2"));
                 c.setEmail(rs.getString("email"));
                 contatos.add(c);
             }
@@ -127,7 +151,9 @@ public class Contato extends Entidade{
                 c.setId(rs.getInt("id"));
                 c.setNome(rs.getString("nome"));
                 c.setTelefone(rs.getString("telefone"));
+                c.setTelefone2(rs.getString("telefone2"));
                 c.setCelular(rs.getString("celular"));
+                c.setCelular2(rs.getString("celular2"));
                 c.setEmail(rs.getString("email"));
                 return c;
             }
@@ -147,7 +173,9 @@ public class Contato extends Entidade{
                 c.setId(rs.getInt("id"));
                 c.setNome(rs.getString("nome"));
                 c.setTelefone(rs.getString("telefone"));
+                c.setTelefone2(rs.getString("telefone2"));
                 c.setCelular(rs.getString("celular"));
+                c.setCelular2(rs.getString("celular2"));
                 c.setEmail(rs.getString("email"));
                 return c;
             }
@@ -159,12 +187,14 @@ public class Contato extends Entidade{
     @Override
     public Boolean insere() throws SQLException {
         try (Connection conn = FabricaJDBC.criaConn()) {
-            String sql = "INSERT INTO contatos(nome, telefone, celular, email) VALUES (?,?,?,?);";
+            String sql = "INSERT INTO contatos(nome, telefone,telefone2, celular,celular2, email) VALUES (?,?,?,?,?,?);";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, getNome());
             preparedStatement.setString(2, getTelefone());
-            preparedStatement.setString(3, getCelular());
-            preparedStatement.setString(4, getEmail());
+            preparedStatement.setString(3, getTelefone2());
+            preparedStatement.setString(4, getCelular());
+            preparedStatement.setString(5, getCelular2());
+            preparedStatement.setString(6, getEmail());
             preparedStatement.execute();
             return true;
         }
@@ -176,15 +206,19 @@ public class Contato extends Entidade{
             String sql = "UPDATE contatos " +
                          "SET nome = ?," +
                          "telefone = ?," +
+                         "telefone2 = ?," +
                          "celular = ?," +
+                         "celular2 = ?," +
                          "email = ?" +
                          "WHERE id = ?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, getNome());
             preparedStatement.setString(2, getTelefone());
-            preparedStatement.setString(3, getCelular());
-            preparedStatement.setString(4, getEmail());
-            preparedStatement.setInt( 5, getId());
+            preparedStatement.setString(3, getTelefone2());
+            preparedStatement.setString(4, getCelular());
+            preparedStatement.setString(5, getCelular2());
+            preparedStatement.setString(6, getEmail());
+            preparedStatement.setInt( 7, getId());
             preparedStatement.execute();
             return true;
         }

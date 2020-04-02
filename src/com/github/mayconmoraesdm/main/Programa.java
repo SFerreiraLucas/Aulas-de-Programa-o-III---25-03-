@@ -28,6 +28,7 @@ public class Programa {
                         break;
                     case 2:
                         lista(1);
+
                         break;
                     case 3:
                         listanome();
@@ -61,8 +62,8 @@ public class Programa {
         if (contatos.size() == 0) {
             System.out.printf("Nenhum contato na agenda!");
         } else {
-            contatos.forEach(c -> System.out.println(String.format("Id: %d\nNome: %s\nTelefone: %s\nCelular: %s\nE-mail: %s\n",
-                    c.getId(), c.getNome(), c.getTelefone(), c.getCelular(), c.getEmail())));
+            contatos.forEach(c -> System.out.println(String.format("Id: %d\nNome: %s\nTelefone: %s\nTelefone2: %s\nCelular: %s\nCelular2: %s\nE-mail: %s\n",
+                    c.getId(), c.getNome(), c.getTelefone(), c.getTelefone2(),c.getCelular(),c.getCelular2(), c.getEmail())));
         }
     }
 
@@ -73,8 +74,8 @@ public class Programa {
         idl = teclado.nextInt();
         System.out.println("Lista um contato");
         Contato c = new Contato(idl);
-        System.out.println(String.format("Id: %d\nNome: %s\nTelefone: %s\nCelular: %s\nE-mail: %s\n",
-                c.getId(), c.getNome(), c.getTelefone(), c.getCelular(), c.getEmail()));
+        System.out.println(String.format("Id: %d\nNome: %s\nTelefone: %s\nTelefone2: %s\nCelular: %s\nCelular2: %s\nE-mail: %s\n",
+                c.getId(), c.getNome(), c.getTelefone(), c.getTelefone2(), c.getCelular(), c.getCelular2(), c.getEmail()));
     }
     public static void listanome() {
         String nomeb;
@@ -83,8 +84,8 @@ public class Programa {
         nomeb = teclado.nextLine();
         System.out.println("Lista um contato");
         Contato c = new Contato(nomeb);
-        System.out.println(String.format("Id: %d\nNome: %s\nTelefone: %s\nCelular: %s\nE-mail: %s\n",
-                c.getId(), c.getNome(), c.getTelefone(), c.getCelular(), c.getEmail()));
+        System.out.println(String.format("Id: %d\nNome: %s\nTelefone: %s\nTelefone2: %s\nCelular: %s\nCelular2: %s\nE-mail: %s\n",
+                c.getId(), c.getNome(), c.getTelefone(), c.getTelefone2(), c.getCelular(), c.getCelular2(), c.getEmail()));
 
     }
 
@@ -93,7 +94,9 @@ public class Programa {
         try {
             String nome;
             String telefone1;
+            String telefone2;
             String celular1;
+            String celular2;
             String email;
 
             Scanner teclado = new Scanner(System.in);
@@ -105,9 +108,15 @@ public class Programa {
             System.out.println("Digite Telefone: ");
             telefone1 = teclado.nextLine();
             contato.setTelefone(telefone1);
+            System.out.println("Digite Telefone2: ");
+            telefone2 = teclado.nextLine();
+            contato.setTelefone2(telefone2);
             System.out.println("Digite Celular: ");
             celular1 = teclado.nextLine();
             contato.setCelular(celular1);
+            System.out.println("Digite Celular2: ");
+            celular2 = teclado.nextLine();
+            contato.setCelular2(celular2);
             System.out.println("Digite E-mail: ");
             email = teclado.nextLine();
             contato.setEmail(email);
@@ -122,7 +131,9 @@ public class Programa {
         try {
             String nome;
             String telefone1;
+            String telefone2;
             String celular1;
+            String celular2;
             String email;
             int ida;
 
@@ -132,6 +143,8 @@ public class Programa {
             ida = teclado.nextInt();
             Contato contato = new Contato(ida);
             System.out.println("Alterando ID: "+ ida);
+            System.out.println(String.format("Id: %d\nNome: %s\nTelefone: %s\nTelefone2: %s\nCelular: %s\nCelular2: %s\nE-mail: %s\n",
+                    contato.getId(), contato.getNome(), contato.getTelefone(), contato.getTelefone2(), contato.getCelular(), contato.getCelular2(), contato.getEmail()));
             System.out.println("Digite Novo Nome do Contato: ");
             nome = teclado.nextLine();
             nome = teclado.nextLine();
@@ -139,9 +152,15 @@ public class Programa {
             System.out.println("Digite Novo Telefone: ");
             telefone1 = teclado.nextLine();
             contato.setTelefone(telefone1);
+            System.out.println("Digite Novo Telefone2: ");
+            telefone2 = teclado.nextLine();
+            contato.setTelefone2(telefone2);
             System.out.println("Digite Novo Celular: ");
             celular1 = teclado.nextLine();
             contato.setCelular(celular1);
+            System.out.println("Digite Novo Celular2: ");
+            celular2 = teclado.nextLine();
+            contato.setCelular2(celular2);
             System.out.println("Digite Novo E-mail: ");
             email = teclado.nextLine();
             contato.setEmail(email);
